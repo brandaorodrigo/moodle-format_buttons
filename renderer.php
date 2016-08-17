@@ -68,7 +68,7 @@ class format_buttons_renderer extends format_topics_renderer {
             $html .= html_writer::tag('style', $css);
         }
         $withoutdivisor = true;
-        for ($k = 1; $k <= 4; $k++) {
+        for ($k = 1; $k <= 6; $k++) {
             if ($course->{'divisor'.$k}) {
                 $withoutdivisor = false;
             }

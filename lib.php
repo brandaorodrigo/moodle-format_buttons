@@ -51,7 +51,7 @@ class format_buttons extends format_topics {
                 'default' => get_config('format_buttons', 'sectionposition'),
                 'type' => PARAM_INT,
             );
-            for ($i = 1; $i <= 5; $i++) {
+            for ($i = 1; $i <= 6; $i++) {
                 $courseformatoptions['divisortext'.$i] = array(
                     'default' => get_config('format_buttons', 'divisortext'.$i),
                     'type' => PARAM_TEXT,
@@ -109,7 +109,7 @@ class format_buttons extends format_topics {
                     ),
                 ),
             );
-            for ($i = 1; $i <= 5; $i++) {
+            for ($i = 1; $i <= 6; $i++) {
                 $courseformatoptionsedit['divisortext'.$i] = array(
                     'label' => get_string('divisortext', 'format_buttons').' '.$i,
                     'help' => 'divisortext',
