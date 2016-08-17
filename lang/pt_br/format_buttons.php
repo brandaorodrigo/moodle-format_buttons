@@ -23,7 +23,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname'] = 'Formato de curso com botões';
+$string['pluginname'] = 'Formato Botões';
 $string['currentsection'] = 'Este tópico';
 $string['editsection'] = 'Editar tópico';
 $string['deletesection'] = 'Remover tópico';
