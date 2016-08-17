@@ -33,11 +33,11 @@ $string['hidefromothers'] = 'Hide topic';
 $string['showfromothers'] = 'Show topic';
 $string['showdefaultsectionname'] = 'Show the default sections name';
 $string['showdefaultsectionname_help'] = 'If no name is set for the section will not show anything.<br>
-By definition an unnamed topic is displayed as <strong>Topic N</strong>.';
+By definition an unnamed topic is displayed as <strong>Topic [N]</strong>.';
 $string['yes'] = 'Yes';
 $string['no'] = 'No';
-$string['sectionposition'] = 'First section position';
-$string['sectionposition_help'] = 'The first section will appear together the visible section.<br><br>
+$string['sectionposition'] = 'Section zero position';
+$string['sectionposition_help'] = 'The section 0 will appear together the visible section.<br><br>
 <strong>Above the list buttons</strong><br>Use this option if you want to add some text or resource before the buttons list.
 <i>Example: Define a picture to illustrate the course.</i><br><br><strong>Below the visible section</strong><br>
 Use this option if you want to add some text or resource after the visible section.
@@ -47,7 +47,7 @@ $string['below'] = 'Below the visible section';
 $string['divisortext'] = 'Title of the grouping';
 $string['divisortext_help'] = 'The grouping sections is used to saparar section by type or modules.
 <i>Example: The course has 10 sections divided into two modules: Theoretical (with 5 sections) and Practical (with 5 sections).<br>
-Define the title with "Teorical" and set de number of sections to 5.</i><br><br>
+Define the title like "Teorical" and set de number of sections to 5.</i><br><br>
 Tip: if you want uses the tag <strong>&lt;br&gt;</strong> type <strong>[br]</strong>.';
 $string['divisor'] = 'Number of sections to group';
 $string['colorcurrent'] = 'Color of the current section button';
