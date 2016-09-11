@@ -41,21 +41,27 @@
     display: block;
     margin-top: 35px;
 }
-#buttonsectioncontainer {
-    display: none;
-    margin: 20px auto;
+#divsectionediting {
+    display: table;
+    background: #EA4827;
+    border-radius: 5px;
+    margin: 10px 0 40px 0;
+    width: calc(100% - 20px);
+    padding: 10px;
 }
 #buttonsectionediting {
-    display: block;
     text-align: center;
-    height: 60px;
-    line-height: 60px;
+    vertical-align: middle;
+    line-height: 18px;
     color: #fff;
     font-size: 14px;
     letter-spacing: 1px;
     font-style: italic;
-    margin: 10px 0 40px 0;
-    background: #d00;
+    display: table-cell;
+}
+#buttonsectioncontainer {
+    display: none;
+    margin: 20px auto;
 }
 #buttonsectioncontainer .buttonsection {
     background: rgba(0, 0, 0, 0.1);
@@ -115,11 +121,9 @@
 #buttonsectioncontainer .buttonsection.sectionvisible {
     background: #0070a8;
     color: #fff;
+    border-color: #0070a8;
 }
 /* editing */
 .editing .course-content ul.buttons li.section.main {
     display: block;
-}
-.editing #buttonsectioncontainer {
-    opacity: 0.30;
 }

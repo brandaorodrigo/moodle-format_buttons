@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -43,6 +44,10 @@ class format_buttons extends format_topics {
                 'default' => $courseconfig->numsections,
                 'type' => PARAM_INT,
             );
+            $courseformatoptions['hiddensections'] = array(
+                'default' => $courseconfig->hiddensections,
+                'type' => PARAM_INT,
+            );
             $courseformatoptions['showdefaultsectionname'] = array(
                 'default' => get_config('format_buttons', 'showdefaultsectionname'),
                 'type' => PARAM_INT,
@@ -84,6 +89,18 @@ class format_buttons extends format_topics {
                 'label' => new lang_string('numberweeks'),
                 'element_type' => 'select',
                 'element_attributes' => array($sectionmenu),
+            );
+            $courseformatoptionsedit['hiddensections'] = array(
+                'label' => new lang_string('hiddensections'),
+                'help' => 'hiddensections',
+                'help_component' => 'moodle',
+                'element_type' => 'select',
+                'element_attributes' => array(
+                    array(
+                        0 => new lang_string('hiddensectionscollapsed'),
+                        1 => new lang_string('hiddensectionsinvisible')
+                    )
+                ),
             );
             $courseformatoptionsedit['showdefaultsectionname'] = array(
                 'label' => get_string('showdefaultsectionname', 'format_buttons'),

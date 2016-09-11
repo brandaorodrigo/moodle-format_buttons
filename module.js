@@ -35,9 +35,11 @@ M.format_buttons.init = function(Y, numsections) {
 
 M.format_buttons.hide = function () {
     for (var i = 1; i <= this.numsections; i++) {
-        var buttonsection = document.getElementById('buttonsection-'+i);
-        buttonsection.setAttribute('class', buttonsection.getAttribute('class').replace('sectionvisible', ''));
-        document.getElementById('section-'+i).style.display = 'none';
+        if (document.getElementById('buttonsection-'+i) != undefined) {
+            var buttonsection = document.getElementById('buttonsection-'+i);
+            buttonsection.setAttribute('class', buttonsection.getAttribute('class').replace('sectionvisible', ''));
+            document.getElementById('section-'+i).style.display = 'none'; 
+        }
     }
 };
 

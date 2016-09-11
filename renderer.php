@@ -1,4 +1,5 @@
 <?php
+
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -87,6 +88,9 @@ class format_buttons_renderer extends format_topics_renderer {
             if ($section > $course->numsections) {
                 continue;
             }
+            if ($course->hiddensections && !(int)$thissection->visible) {
+                continue;
+            }
             if (isset($course->{'divisor'.$currentdivisor}) && $count > $course->{'divisor'.$currentdivisor}) {
                 $currentdivisor++;
                 $count = 1;
@@ -102,9 +106,11 @@ class format_buttons_renderer extends format_topics_renderer {
             $id = 'buttonsection-'.$section;
             $name = (isset($course->{'divisor'.$currentdivisor}) && $course->{'divisor'.$currentdivisor} == 1) ? '&bull;&bull;&bull;' : $count;
             $class = 'buttonsection';
-            if ((int)$thissection->visible) {
-                $onclick = 'M.format_buttons.show('.$section.')';
-            } else {
+            $onclick = 'M.format_buttons.show('.$section.')';
+            if (!$thissection->available && !empty($thissection->availableinfo)) {
+                $class .= ' sectionhidden';
+            } else 
+            if (!$thissection->uservisible || !$thissection->visible) {
                 $class .= ' sectionhidden';
                 $onclick = false;
             }
@@ -122,7 +128,8 @@ class format_buttons_renderer extends format_topics_renderer {
         }
         $html = html_writer::tag('div', $html, array('id' => 'buttonsectioncontainer'));
         if ($PAGE->user_is_editing()) {
-            $html .= html_writer::tag('div', get_string('editing', 'format_buttons'), array('id' => 'buttonsectionediting'));
+            $buttonsectionediting = html_writer::tag('div', get_string('editing', 'format_buttons'), array('id' => 'buttonsectionediting'));
+            $html .= html_writer::tag('div', $buttonsectionediting, array('id' => 'divsectionediting'));
         }
         return $html;
     }
@@ -214,13 +221,19 @@ class format_buttons_renderer extends format_topics_renderer {
             if ($section > $course->numsections) {
                 continue;
             }
-            $showsection = $thissection->uservisible or ($thissection->visible 
-            and !$thissection->available and !empty($thissection->availableinfo));
-            if (!$showsection) {
-                if ($thissection->available) {
-                    $htmlsection[$section] .= $this->section_hidden($section, $course->id);
+            /* if is not editing verify the rules to display the sections */
+            if (!$PAGE->user_is_editing()) {
+                if ($course->hiddensections && !(int)$thissection->visible) {
+                    continue;
                 }
-                continue;
+                if (!$thissection->available && !empty($thissection->availableinfo)) {
+                    $htmlsection[$section] .= $this->section_header($thissection, $course, false, 0);
+                    continue;
+                }
+                if (!$thissection->uservisible || !$thissection->visible) {
+                    $htmlsection[$section] .= $this->section_hidden($section, $course->id);
+                    continue;
+                }
             }
             $htmlsection[$section] .= $this->section_header($thissection, $course, false, 0);
             if ($thissection->uservisible) {
@@ -229,7 +242,7 @@ class format_buttons_renderer extends format_topics_renderer {
             }
             $htmlsection[$section] .= $this->section_footer();
         }
-        if ($section0->summary or !empty($modinfo->sections[0]) or $PAGE->user_is_editing()) {
+        if ($section0->summary || !empty($modinfo->sections[0]) || $PAGE->user_is_editing()) {
             $htmlsection0 = $this->section_header($section0, $course, false, 0);
             $htmlsection0 .= $this->courserenderer->course_section_cm_list($course, $section0, 0);
             $htmlsection0 .= $this->courserenderer->course_section_add_cm_control($course, 0, 0);
