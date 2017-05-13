@@ -19,7 +19,7 @@
  *
  * @package    format_buttons
  * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2016 Rodrigo Brandão
+ * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,7 +28,7 @@
     list-style: none;
     display: none;
     border-left: 0;
-    border-right: 0; 
+    border-right: 0;
 }
 .course-content ul.buttons span.above li.section {
     border: 0;
@@ -43,7 +43,7 @@
 }
 #divsectionediting {
     display: table;
-    background: #EA4827;
+    background: #ea272a;
     border-radius: 5px;
     margin: 10px 0 40px 0;
     width: calc(100% - 20px);
@@ -66,9 +66,9 @@
 #buttonsectioncontainer .buttonsection {
     background: rgba(0, 0, 0, 0.1);
     color: rgba(0, 0, 0, 0.6);
-    display: inline-block; 
+    display: inline-block;
     text-align: center;
-    width: 52px; 
+    width: 52px;
     line-height: 52px;
     height: 52px;
     overflow: hidden;
@@ -85,8 +85,8 @@
     color: rgba(0, 0, 0, 0.8);
 }
 #buttonsectioncontainer .buttonsection.sectionhidden {
-    width: 50px;
-    height: 50px;
+    width: 54px;
+    height: 54px;
     line-height: 50px;
     border: 2px solid;
     background: none;
@@ -94,14 +94,14 @@
     color: rgba(0, 0, 0, 0.2);
     border-color: rgba(0, 0, 0, 0.1);
 }
-#buttonsectioncontainer .divisorsection { 
+#buttonsectioncontainer .divisorsection {
     display: inline-block;
     padding: 0;
     overflow-y: hidden;
     height: 52px;
     margin: 0 4px 10px 25px;
 }
-#buttonsectioncontainer .divisortext { 
+#buttonsectioncontainer .divisortext {
     display: table-cell;
     vertical-align: middle;
     padding: 0;
@@ -115,13 +115,13 @@
 }
 /* colors */
 #buttonsectioncontainer .buttonsection.current {
-    background: #003d5c;
+    background: #007193;
     color: #fff;
 }
 #buttonsectioncontainer .buttonsection.sectionvisible {
-    background: #0070a8;
+    background: #00acdf;
     color: #fff;
-    border-color: #0070a8;
+    border-color: #00acdf;
 }
 /* editing */
 .editing .course-content ul.buttons li.section.main {

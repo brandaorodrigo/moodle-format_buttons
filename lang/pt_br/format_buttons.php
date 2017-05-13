@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -20,7 +19,7 @@
  *
  * @package    format_buttons
  * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2016 Rodrigo Brandão
+ * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -41,14 +40,14 @@ $string['yes'] = 'Sim';
 $string['no'] = 'Não';
 $string['sectionposition'] = 'Posição da seção zero';
 $string['sectionposition_help'] = 'A seção 0 aparecerá junto com a seção visível.<br><br>
-<strong>Botões acima da lista</strong><br>Use esta opção se você deseja adicionar algum texto ou 
+<strong>Botões acima da lista</strong><br>Use esta opção se você deseja adicionar algum texto ou
 recurso antes da lista de botões.<i>Exemplo: Usar uma imagem para ilustrar o curso.</i><br><br><strong>
 Abaixo da seção visível</strong><br>Use esta opção se você deseja adicionar algum texto ou recurso depois da seção visível.
 <i>Exemplo: Recursos ou links a serem exibidos independentes da seção visível.</i><br>';
 $string['above'] = 'Acima da lista de botões';
 $string['below'] = 'Abaixo da seção visível';
 $string['divisortext'] = 'Título do agrupamento';
-$string['divisortext_help'] = 'As seções agrupadas são usadas para separar seção por tipo ou módulos. 
+$string['divisortext_help'] = 'As seções agrupadas são usadas para separar seção por tipo ou módulos.
 <i>Exemplo: O curso possuiu 10 seções divididas em 2 módulos: Teórico (com 5 seções) e Prático (com 5 seções).<br>
 Defina o título com "Teórico" e configure o número de seções para 5.</i><br><br>
 Dica: se você desejar usar a tag <strong>&lt;br&gt;</strong> digite <strong>[br]</strong>.';
@@ -59,4 +58,11 @@ $string['colorcurrent_help'] = 'A seção atual é a seção marcada com destaqu
 $string['colorvisible'] = 'Cor do botão da seção visível';
 $string['colorvisible_help'] = 'A seção visível é a seção selecionada. <br> Defina uma cor em hexadecimal.
 <i>Exemplo: #747fab</i><br>.Se quiser usar a cor padrão deixe em branco.';
-$string['editing'] = 'Os botões ficam desabilitados enquanto o modo de edição estiver ativado...';
+$string['editing'] = 'Os botões ficam desabilitados enquanto o modo de edição estiver ativado.';
+$string['sequential'] = 'Sequential';
+$string['notsequentialdesc'] = 'Cada novo grupo o contador de seções volta para um.';
+$string['sequentialdesc'] = 'Contar as seções ignorando os agrupamentos.';
+$string['sectiontype'] = 'Estilo da listagem';
+$string['numeric'] = 'Numérico';
+$string['roman'] = 'Algarismos romanos';
+$string['alphabet'] = 'Alfabético';

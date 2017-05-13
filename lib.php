@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -15,6 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * format_buttons
+ *
+ * @package    format_buttons
+ * @author     Rodrigo Brandão (rodrigobrandao.com.br)
+ * @copyright  2017 Rodrigo Brandão
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot. '/course/format/topics/lib.php');
@@ -24,7 +31,7 @@ require_once($CFG->dirroot. '/course/format/topics/lib.php');
  *
  * @package    format_buttons
  * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2016 Rodrigo Brandão
+ * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class format_buttons extends format_topics {
@@ -56,9 +63,21 @@ class format_buttons extends format_topics {
                 'default' => get_config('format_buttons', 'sectionposition'),
                 'type' => PARAM_INT,
             );
+            $courseformatoptions['sequential'] = array(
+                'default' => get_config('format_buttons', 'sequential'),
+                'type' => PARAM_INT,
+            );
+            $courseformatoptions['sectiontype'] = array(
+                'default' => get_config('format_buttons', 'sectiontype'),
+                'type' => PARAM_TEXT,
+            );
             for ($i = 1; $i <= 6; $i++) {
+                $divisortext = get_config('format_buttons', 'divisortext'.$i);
+                if (!$divisortext) {
+                     $divisortext = '';
+                }
                 $courseformatoptions['divisortext'.$i] = array(
-                    'default' => get_config('format_buttons', 'divisortext'.$i),
+                    'default' => $divisortext,
                     'type' => PARAM_TEXT,
                 );
                 $courseformatoptions['divisor'.$i] = array(
@@ -66,12 +85,20 @@ class format_buttons extends format_topics {
                     'type' => PARAM_INT,
                 );
             }
+            $colorcurrent = get_config('format_buttons', 'colorcurrent');
+            if (!$colorcurrent) {
+                $colorcurrent = '';
+            }
             $courseformatoptions['colorcurrent'] = array(
-                'default' => get_config('format_buttons', 'colorcurrent'),
+                'default' => $colorcurrent,
                 'type' => PARAM_TEXT,
             );
+            $colorvisible = get_config('format_buttons', 'colorvisible');
+            if (!$colorvisible) {
+                $colorvisible = '';
+            }
             $courseformatoptions['colorvisible'] = array(
-                'default' => get_config('format_buttons', 'colorvisible'),
+                'default' => $colorvisible,
                 'type' => PARAM_TEXT,
             );
         }
@@ -126,6 +153,29 @@ class format_buttons extends format_topics {
                     ),
                 ),
             );
+            $courseformatoptionsedit['sequential'] = array(
+                'label' => get_string('sequential', 'format_buttons'),
+                'help_component' => 'format_buttons',
+                'element_type' => 'select',
+                'element_attributes' => array(
+                    array(
+                        0 => get_string('notsequentialdesc', 'format_buttons'),
+                        1 => get_string('sequentialdesc', 'format_buttons'),
+                    ),
+                ),
+            );
+            $courseformatoptionsedit['sectiontype'] = array(
+                'label' => get_string('sectiontype', 'format_buttons'),
+                'help_component' => 'format_buttons',
+                'element_type' => 'select',
+                'element_attributes' => array(
+                    array(
+                        'numeric' => get_string('numeric', 'format_buttons'),
+                        'roman' => get_string('roman', 'format_buttons'),
+                        'alphabet' => get_string('alphabet', 'format_buttons'),
+                    ),
+                ),
+            );
             for ($i = 1; $i <= 6; $i++) {
                 $courseformatoptionsedit['divisortext'.$i] = array(
                     'label' => get_string('divisortext', 'format_buttons').' '.$i,
@@ -176,7 +226,7 @@ class format_buttons extends format_topics {
                     if (array_key_exists($key, $oldcourse)) {
                         $data[$key] = $oldcourse[$key];
                     } else if ($key === 'numsections') {
-                        $maxsection = $DB->get_field_sql('SELECT max(section) from 
+                        $maxsection = $DB->get_field_sql('SELECT max(section) from
                         {course_sections} WHERE course = ?', array($this->courseid));
                         if ($maxsection) {
                             $data['numsections'] = $maxsection;
@@ -203,7 +253,7 @@ class format_buttons extends format_topics {
      * get_view_url
      *
      * @param int|stdclass $section
-     * @param array $options 
+     * @param array $options
      * @return null|moodle_url
      */
     public function get_view_url($section, $options = array()) {

@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -20,7 +19,7 @@
  *
  * @package    format_buttons
  * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2016 Rodrigo Brandão
+ * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -42,7 +41,7 @@ $string['divisortext_help'] = 'El agrupamiento de secciones se usa para separar 
 <i>Ejemplo: El curso tiene 10 secciones, divididas en dos módulos: Teórico (con 5 secciones) y Práctico (con 5 secciones).<br>
 Defina el título con "Teórico" y configure el número de secciones a 5.</i><br><br>
 Sugerencia: Si lo desea, use la marca (tag)  <strong>&lt;br&gt;</strong> type <strong>[br]</strong>.';
-$string['editing'] = 'Los botones están deshabilitados mientras esté activo el modo de edición...';
+$string['editing'] = 'Los botones están deshabilitados mientras esté activo el modo de edición.';
 $string['editsection'] = 'Editar tópico';
 $string['hidefromothers'] = 'Ocultar tópico';
 $string['no'] = 'No';
@@ -60,3 +59,10 @@ $string['showdefaultsectionname_help'] = 'Si no se configura nombre para la secc
 Por definición, un tópico sin nombre se muestra como <strong>Tópico N</strong>.';
 $string['showfromothers'] = 'Mostrar tópico';
 $string['yes'] = 'Si';
+$string['sequential'] = 'Secuencial';
+$string['notsequentialdesc'] = 'Cada nuevo grupo empieza a contar secciones de uno.';
+$string['sequentialdesc'] = 'Cuente los números de sección ignorando el agrupamiento.';
+$string['sectiontype'] = 'Estilo de lista';
+$string['numeric'] = 'Numérico';
+$string['roman'] = 'Números romanos';
+$string['alphabet'] = 'Alfabeto';

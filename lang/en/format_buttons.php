@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -20,7 +19,7 @@
  *
  * @package    format_buttons
  * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2016 Rodrigo Brandão
+ * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -59,4 +58,11 @@ $string['colorcurrent_help'] = 'The current section is the section marked with h
 $string['colorvisible'] = 'Color of the visible section button';
 $string['colorvisible_help'] = 'The visible section is the selected section.<br>Define a color in hexadecimal.
 <i>Example: #747fab</i><br>If want use the default color leave empty.';
-$string['editing'] = 'The buttons are disabled while the edit mode is active...';
+$string['editing'] = 'The buttons are disabled while the edit mode is active.';
+$string['sequential'] = 'Sequential';
+$string['notsequentialdesc'] = 'Each new group begins counting sections from one.';
+$string['sequentialdesc'] = 'Count the section numbers ignoring the grouping.';
+$string['sectiontype'] = 'List style';
+$string['numeric'] = 'Numeric';
+$string['roman'] = 'Roman numerals';
+$string['alphabet'] = 'Alphabet';

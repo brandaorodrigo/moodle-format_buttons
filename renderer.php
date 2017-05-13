@@ -1,5 +1,4 @@
 <?php
-
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -15,6 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * format_buttons_renderer
+ *
+ * @package    format_buttons
+ * @author     Rodrigo Brandão (rodrigobrandao.com.br)
+ * @copyright  2017 Rodrigo Brandão
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot.'/course/format/topics/renderer.php');
@@ -24,7 +31,7 @@ require_once($CFG->dirroot.'/course/format/topics/renderer.php');
  *
  * @package    format_buttons
  * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2016 Rodrigo Brandão
+ * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class format_buttons_renderer extends format_topics_renderer {
@@ -95,22 +102,32 @@ class format_buttons_renderer extends format_topics_renderer {
                 $currentdivisor++;
                 $count = 1;
             }
-            if (isset($course->{'divisor'.$currentdivisor}) && 
-                $course->{'divisor'.$currentdivisor} != 0 && 
-                !isset($divisorshow[$currentdivisor])) {
+            if (isset($course->{'divisor'.$currentdivisor})
+                && $course->{'divisor'.$currentdivisor} != 0
+                && !isset($divisorshow[$currentdivisor])) {
                 $currentdivisorhtml = html_writer::tag('div', str_replace('[br]', '<br>',
                 $course->{'divisortext'.$currentdivisor}), array('class' => 'divisortext'));
                 $html .= html_writer::tag('div', $currentdivisorhtml, array('class' => 'divisorsection'));
                 $divisorshow[$currentdivisor] = true;
             }
             $id = 'buttonsection-'.$section;
-            $name = (isset($course->{'divisor'.$currentdivisor}) && $course->{'divisor'.$currentdivisor} == 1) ? '&bull;&bull;&bull;' : $count;
+            if ($course->sequential) {
+                $name = $section;
+            } else {
+                $name = (isset($course->{'divisor'.$currentdivisor})
+                && $course->{'divisor'.$currentdivisor} == 1) ? '&bull;&bull;&bull;' : $count;
+            }
+            if ($course->sectiontype == 'alphabet' && is_numeric($name)) {
+                $name = $this->number_to_alphabet($name);
+            }
+            if ($course->sectiontype == 'roman' && is_numeric($name)) {
+                $name = $this->number_to_roman($name);
+            }
             $class = 'buttonsection';
-            $onclick = 'M.format_buttons.show('.$section.')';
+            $onclick = 'M.format_buttons.show('.$section.','.$course->id.')';
             if (!$thissection->available && !empty($thissection->availableinfo)) {
                 $class .= ' sectionhidden';
-            } else 
-            if (!$thissection->uservisible || !$thissection->visible) {
+            } else if (!$thissection->uservisible || !$thissection->visible) {
                 $class .= ' sectionhidden';
                 $onclick = false;
             }
@@ -128,10 +145,66 @@ class format_buttons_renderer extends format_topics_renderer {
         }
         $html = html_writer::tag('div', $html, array('id' => 'buttonsectioncontainer'));
         if ($PAGE->user_is_editing()) {
-            $buttonsectionediting = html_writer::tag('div', get_string('editing', 'format_buttons'), array('id' => 'buttonsectionediting'));
+            $buttonsectionediting = html_writer::tag('div', get_string('editing', 'format_buttons'),
+            array('id' => 'buttonsectionediting'));
             $html .= html_writer::tag('div', $buttonsectionediting, array('id' => 'divsectionediting'));
         }
         return $html;
+    }
+
+    /**
+     * number_to_roman
+     *
+     * @param integer $number
+     * @return string
+     */
+    protected function number_to_roman($number) {
+        $number = intval($number);
+        $return = '';
+        $romanarray = array(
+            'M' => 1000,
+            'CM' => 900,
+            'D' => 500,
+            'CD' => 400,
+            'C' => 100,
+            'XC' => 90,
+            'L' => 50,
+            'XL' => 40,
+            'X' => 10,
+            'IX' => 9,
+            'V' => 5,
+            'IV' => 4,
+            'I' => 1
+        );
+        foreach ($romanarray as $roman => $value) {
+            $matches = intval($number / $value);
+            $return .= str_repeat($roman, $matches);
+            $number = $number % $value;
+        }
+        return $return;
+    }
+
+    /**
+     * number_to_alphabet
+     *
+     * @param integer $number
+     * @return string
+     */
+    protected function number_to_alphabet($number) {
+        $number = $number - 1;
+        $alphabet = range("A", "Z");
+        if ($number <= 25) {
+            return $alphabet[$number];
+        } else if ($number > 25) {
+            $dividend = ($number + 1);
+            $alpha = '';
+            while ($dividend > 0) {
+                $modulo = ($dividend - 1) % 26;
+                $alpha = $alphabet[$modulo] . $alpha;
+                $dividend = floor((($dividend - $modulo) / 26));
+            }
+            return $alpha;
+        }
     }
 
     /**
@@ -164,7 +237,8 @@ class format_buttons_renderer extends format_topics_renderer {
                 $sectionstyle = ' current';
             }
         }
-        $o .= html_writer::start_tag('li', array('id' => 'section-'.$section->section,'class' => 'section main clearfix'.$sectionstyle, 'role' => 'region', 'aria-label' => get_section_name($course, $section)));
+        $o .= html_writer::start_tag('li', array('id' => 'section-'.$section->section,
+        'class' => 'section main clearfix'.$sectionstyle, 'role' => 'region', 'aria-label' => get_section_name($course, $section)));
         $o .= html_writer::tag('span', $this->section_title($section, $course), array('class' => 'hidden sectionname'));
         $leftcontent = $this->section_left_content($section, $course, $onsectionpage);
         $o .= html_writer::tag('div', $leftcontent, array('class' => 'left side'));
@@ -204,8 +278,8 @@ class format_buttons_renderer extends format_topics_renderer {
         $course = course_get_format($course)->get_course();
         $context = context_course::instance($course->id);
         $completioninfo = new completion_info($course);
-        if (isset($_COOKIE['sectionvisible'])) {
-            $sectionvisible = $_COOKIE['sectionvisible'];
+        if (isset($_COOKIE['sectionvisible_'.$course->id])) {
+            $sectionvisible = $_COOKIE['sectionvisible_'.$course->id];
         } else if ($course->marker > 0) {
             $sectionvisible = $course->marker;
         } else {

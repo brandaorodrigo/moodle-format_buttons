@@ -18,7 +18,7 @@
  *
  * @package    format_buttons
  * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2016 Rodrigo Brandão
+ * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -33,20 +33,20 @@ M.format_buttons.init = function(Y, numsections) {
     document.getElementById('buttonsectioncontainer').style.display = 'table';
 };
 
-M.format_buttons.hide = function () {
+M.format_buttons.hide = function() {
     for (var i = 1; i <= this.numsections; i++) {
-        if (document.getElementById('buttonsection-'+i) != undefined) {
-            var buttonsection = document.getElementById('buttonsection-'+i);
+        if (document.getElementById('buttonsection-' + i) != undefined) {
+            var buttonsection = document.getElementById('buttonsection-' + i);
             buttonsection.setAttribute('class', buttonsection.getAttribute('class').replace('sectionvisible', ''));
-            document.getElementById('section-'+i).style.display = 'none'; 
+            document.getElementById('section-' + i).style.display = 'none';
         }
     }
 };
 
-M.format_buttons.show = function (id) {
+M.format_buttons.show = function(id, courseid) {
     this.hide();
-    var buttonsection = document.getElementById('buttonsection-'+id);
+    var buttonsection = document.getElementById('buttonsection-' + id);
     buttonsection.setAttribute('class', buttonsection.getAttribute('class') + ' sectionvisible');
-    document.getElementById('section-'+id).style.display = 'block';
-    document.cookie = 'sectionvisible='+id+'; path=/';
+    document.getElementById('section-' + id).style.display = 'block';
+    document.cookie = 'sectionvisible_' + courseid + '=' + id + '; path=/';
 };
