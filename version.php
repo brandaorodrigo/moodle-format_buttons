@@ -28,5 +28,5 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->requires = 2014101000; /* moodle 2.8.0 */
 $plugin->component = 'format_buttons';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '(Build: 2017051100)';
-$plugin->version = 2017051100;
+$plugin->release = '(Build: 2017062800)';
+$plugin->version = 2017062800;

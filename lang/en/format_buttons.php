@@ -47,17 +47,17 @@ Use this option if you want to add some text or resource after the visible secti
 $string['above'] = 'Above the list buttons';
 $string['below'] = 'Below the visible section';
 $string['divisortext'] = 'Title of the grouping';
-$string['divisortext_help'] = 'The grouping sections is used to saparar section by type or modules.
+$string['divisortext_help'] = 'The grouping sections is used to separate section by type or modules.
 <i>Example: The course has 10 sections divided into two modules: Theoretical (with 5 sections) and Practical (with 5 sections).<br>
-Define the title like "Teorical" and set de number of sections to 5.</i><br><br>
-Tip: if you want uses the tag <strong>&lt;br&gt;</strong> type <strong>[br]</strong>.';
+Define the title like "Teorical" and set the number of sections to 5.</i><br><br>
+Tip: if you want to use the tag <strong>&lt;br&gt;</strong>, type [br].';
 $string['divisor'] = 'Number of sections to group';
 $string['colorcurrent'] = 'Color of the current section button';
 $string['colorcurrent_help'] = 'The current section is the section marked with highlight.<br>Define a color in hexadecimal.
-<i>Example: #fab747</i><br>If want use the default color leave empty.';
+<i>Example: #fab747</i><br>If you want to use the default color, leave empty.';
 $string['colorvisible'] = 'Color of the visible section button';
 $string['colorvisible_help'] = 'The visible section is the selected section.<br>Define a color in hexadecimal.
-<i>Example: #747fab</i><br>If want use the default color leave empty.';
+<i>Example: #747fab</i><br>If you want to use the default color, leave empty.';
 $string['editing'] = 'The buttons are disabled while the edit mode is active.';
 $string['sequential'] = 'Sequential';
 $string['notsequentialdesc'] = 'Each new group begins counting sections from one.';
