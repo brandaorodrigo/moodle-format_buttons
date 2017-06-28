@@ -17,7 +17,7 @@
 /**
  * format_buttons
  *
- * @package    format_buttons
+ * @package    moodle-format_buttons
  * @author     Rodrigo Brandão (rodrigobrandao.com.br)
  * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
