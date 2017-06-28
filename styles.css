@@ -1,0 +1,129 @@
+/*
+// This file is part of Moodle - http://moodle.org/
+//
+// Moodle is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Moodle is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/**
+ * format_buttons
+ *
+ * @package    format_buttons
+ * @author     Rodrigo Brandão (rodrigobrandao.com.br)
+ * @copyright  2017 Rodrigo Brandão
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+.course-content ul.buttons li.section.main {
+    background: none;
+    list-style: none;
+    display: none;
+    border-left: 0;
+    border-right: 0;
+}
+.course-content ul.buttons span.above li.section {
+    border: 0;
+    display: block;
+    margin-bottom: 30px;
+    padding-bottom: 0;
+}
+.course-content ul.buttons span.below li.section {
+    border: 0;
+    display: block;
+    margin-top: 35px;
+}
+#divsectionediting {
+    display: table;
+    background: #ea272a;
+    border-radius: 5px;
+    margin: 10px 0 40px 0;
+    width: calc(100% - 20px);
+    padding: 10px;
+}
+#buttonsectionediting {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 18px;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-style: italic;
+    display: table-cell;
+}
+#buttonsectioncontainer {
+    display: none;
+    margin: 20px auto;
+}
+#buttonsectioncontainer .buttonsection {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    text-align: center;
+    width: 52px;
+    line-height: 52px;
+    height: 52px;
+    overflow: hidden;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 22px;
+    padding: 0;
+    font-weight: bold;
+    margin: 0 5px 10px 5px;
+    vertical-align: top;
+}
+#buttonsectioncontainer .buttonsection:hover {
+    background: rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.8);
+}
+#buttonsectioncontainer .buttonsection.sectionhidden {
+    width: 54px;
+    height: 54px;
+    line-height: 50px;
+    border: 2px solid;
+    background: none;
+    cursor: default;
+    color: rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+#buttonsectioncontainer .divisorsection {
+    display: inline-block;
+    padding: 0;
+    overflow-y: hidden;
+    height: 52px;
+    margin: 0 4px 10px 25px;
+}
+#buttonsectioncontainer .divisortext {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    overflow-y: hidden;
+    height: 52px;
+    text-align: right;
+    color: rgba(0, 0, 0, 0.6);
+}
+/* colors */
+#buttonsectioncontainer .buttonsection.current {
+    background: #007193;
+    color: #fff;
+}
+#buttonsectioncontainer .buttonsection.sectionvisible {
+    background: #00acdf;
+    color: #fff;
+    border-color: #00acdf;
+}
+/* editing */
+.editing .course-content ul.buttons li.section.main {
+    display: block;
+}
