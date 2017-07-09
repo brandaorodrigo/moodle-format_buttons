@@ -1,7 +1,7 @@
 Moodle Course Format "Buttons"
 ===============================
 
-"Buttons" is a course format that creates a menu with buttons in javascript to access the sections, one by one.
+Buttons is a course format that creates a menu with buttons to access the sections, one by one.
 
 Features
 ---------
