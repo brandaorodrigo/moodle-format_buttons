@@ -105,9 +105,13 @@ class format_buttons_renderer extends format_topics_renderer {
             if (isset($course->{'divisor'.$currentdivisor})
                 && $course->{'divisor'.$currentdivisor} != 0
                 && !isset($divisorshow[$currentdivisor])) {
-                $currentdivisorhtml = html_writer::tag('div', str_replace('[br]', '<br>',
-                $course->{'divisortext'.$currentdivisor}), array('class' => 'divisortext'));
+
+                $divisortext = format_text(str_replace('[br]', '<br>', $course->{'divisortext'.$currentdivisor}));
+
+                $currentdivisorhtml = html_writer::tag('div', $divisortext, array('class' => 'divisortext'));
+
                 $html .= html_writer::tag('div', $currentdivisorhtml, array('class' => 'divisorsection'));
+
                 $divisorshow[$currentdivisor] = true;
             }
             $id = 'buttonsection-'.$section;
