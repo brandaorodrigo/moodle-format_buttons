@@ -34,7 +34,8 @@ require_once($CFG->dirroot.'/course/format/topics/renderer.php');
  * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_buttons_renderer extends format_topics_renderer {
+class format_buttons_renderer extends format_topics_renderer
+{
 
     /**
      * get_button_section
@@ -43,7 +44,8 @@ class format_buttons_renderer extends format_topics_renderer {
      * @param string $name
      * @return string
      */
-    protected function get_color_config($course, $name) {
+    protected function get_color_config($course, $name)
+    {
         $return = false;
         if (isset($course->{$name})) {
             $color = str_replace('#', '', $course->{$name});
@@ -62,7 +64,8 @@ class format_buttons_renderer extends format_topics_renderer {
      * @param string $sectionvisible
      * @return string
      */
-    protected function get_button_section($course, $sectionvisible) {
+    protected function get_button_section($course, $sectionvisible)
+    {
         global $PAGE;
         $html = '';
         $css = '';
@@ -70,7 +73,7 @@ class format_buttons_renderer extends format_topics_renderer {
             $css .= '#buttonsectioncontainer .buttonsection.current { background: '.$colorcurrent.'; }';
         }
         if ($colorvisible = $this->get_color_config($course, 'colorvisible')) {
-             $css .= '#buttonsectioncontainer .buttonsection.sectionvisible { background: '.$colorvisible.'; }';
+            $css .= '#buttonsectioncontainer .buttonsection.sectionvisible { background: '.$colorvisible.'; }';
         }
         if ($css) {
             $html .= html_writer::tag('style', $css);
@@ -105,13 +108,12 @@ class format_buttons_renderer extends format_topics_renderer {
             if (isset($course->{'divisor'.$currentdivisor})
                 && $course->{'divisor'.$currentdivisor} != 0
                 && !isset($divisorshow[$currentdivisor])) {
-
-                $divisortext = format_text(str_replace('[br]', '<br>', $course->{'divisortext'.$currentdivisor}));
-
-                $currentdivisorhtml = html_writer::tag('div', $divisortext, array('class' => 'divisortext'));
-
+                $currentdivisorhtml = html_writer::tag('div', str_replace(
+                    '[br]',
+                    '<br>',
+                $course->{'divisortext'.$currentdivisor}
+                ), array('class' => 'divisortext'));
                 $html .= html_writer::tag('div', $currentdivisorhtml, array('class' => 'divisorsection'));
-
                 $divisorshow[$currentdivisor] = true;
             }
             $id = 'buttonsection-'.$section;
@@ -131,7 +133,7 @@ class format_buttons_renderer extends format_topics_renderer {
             $onclick = 'M.format_buttons.show('.$section.','.$course->id.')';
             if (!$thissection->available && !empty($thissection->availableinfo)) {
                 $class .= ' sectionhidden';
-            } else if (!$thissection->uservisible || !$thissection->visible) {
+            } elseif (!$thissection->uservisible || !$thissection->visible) {
                 $class .= ' sectionhidden';
                 $onclick = false;
             }
@@ -149,8 +151,11 @@ class format_buttons_renderer extends format_topics_renderer {
         }
         $html = html_writer::tag('div', $html, array('id' => 'buttonsectioncontainer', 'class' => 'square'));
         if ($PAGE->user_is_editing()) {
-            $buttonsectionediting = html_writer::tag('div', get_string('editing', 'format_buttons'),
-            array('id' => 'buttonsectionediting'));
+            $buttonsectionediting = html_writer::tag(
+                'div',
+                get_string('editing', 'format_buttons'),
+            array('id' => 'buttonsectionediting')
+            );
             $html .= html_writer::tag('div', $buttonsectionediting, array('id' => 'divsectionediting'));
         }
         return $html;
@@ -162,7 +167,8 @@ class format_buttons_renderer extends format_topics_renderer {
      * @param integer $number
      * @return string
      */
-    protected function number_to_roman($number) {
+    protected function number_to_roman($number)
+    {
         $number = intval($number);
         $return = '';
         $romanarray = array(
@@ -194,12 +200,13 @@ class format_buttons_renderer extends format_topics_renderer {
      * @param integer $number
      * @return string
      */
-    protected function number_to_alphabet($number) {
+    protected function number_to_alphabet($number)
+    {
         $number = $number - 1;
         $alphabet = range("A", "Z");
         if ($number <= 25) {
             return $alphabet[$number];
-        } else if ($number > 25) {
+        } elseif ($number > 25) {
             $dividend = ($number + 1);
             $alpha = '';
             while ($dividend > 0) {
@@ -216,7 +223,8 @@ class format_buttons_renderer extends format_topics_renderer {
      *
      * @return string
      */
-    protected function start_section_list() {
+    protected function start_section_list()
+    {
         return html_writer::start_tag('ul', array('class' => 'buttons'));
     }
 
@@ -229,7 +237,8 @@ class format_buttons_renderer extends format_topics_renderer {
      * @param int $sectionreturn
      * @return string
      */
-    protected function section_header($section, $course, $onsectionpage, $sectionreturn = null) {
+    protected function section_header($section, $course, $onsectionpage, $sectionreturn = null)
+    {
         global $PAGE;
         $o = '';
         $currenttext = '';
@@ -237,15 +246,18 @@ class format_buttons_renderer extends format_topics_renderer {
         if ($section->section != 0) {
             if (!$section->visible) {
                 $sectionstyle = ' hidden';
-            } else if (course_get_format($course)->is_section_current($section)) {
+            } elseif (course_get_format($course)->is_section_current($section)) {
                 $sectionstyle = ' current';
             }
         }
         $o .= html_writer::start_tag('li', array('id' => 'section-'.$section->section,
         'class' => 'section main clearfix'.$sectionstyle,
         'role' => 'region', 'aria-label' => get_section_name($course, $section)));
-        $o .= html_writer::tag('span', $this->section_title($section, $course),
-        array('class' => 'hidden sectionname'));
+        $o .= html_writer::tag(
+            'span',
+            $this->section_title($section, $course),
+        array('class' => 'hidden sectionname')
+        );
         $leftcontent = $this->section_left_content($section, $course, $onsectionpage);
         $o .= html_writer::tag('div', $leftcontent, array('class' => 'left side'));
         $rightcontent = $this->section_right_content($section, $course, $onsectionpage);
@@ -266,14 +278,18 @@ class format_buttons_renderer extends format_topics_renderer {
         $context = context_course::instance($course->id);
         if ($PAGE->user_is_editing() && has_capability('moodle/course:update', $context)) {
             $url = new moodle_url('/course/editsection.php', array('id' => $section->id, 'sr' => $sectionreturn));
-            $o .= html_writer::link($url,
+            $o .= html_writer::link(
+                $url,
                 html_writer::empty_tag('img', array('src' => $this->output->pix_url('i/settings'),
                 'class' => 'edit', 'alt' => get_string('edit'))),
-                array('title' => get_string('editsummary')));
+                array('title' => get_string('editsummary'))
+            );
         }
         $o .= html_writer::end_tag('div');
-        $o .= $this->section_availability_message($section,
-        has_capability('moodle/course:viewhiddensections', $context));
+        $o .= $this->section_availability_message(
+            $section,
+        has_capability('moodle/course:viewhiddensections', $context)
+        );
         return $o;
     }
 
@@ -286,7 +302,8 @@ class format_buttons_renderer extends format_topics_renderer {
      * @param array $modnames (argument not used)
      * @param array $modnamesused (argument not used)
      */
-    public function print_multiple_section_page($course, $sections, $mods, $modnames, $modnamesused) {
+    public function print_multiple_section_page($course, $sections, $mods, $modnames, $modnamesused)
+    {
         global $PAGE;
         $modinfo = get_fast_modinfo($course);
         $course = course_get_format($course)->get_course();
@@ -294,7 +311,7 @@ class format_buttons_renderer extends format_topics_renderer {
         $completioninfo = new completion_info($course);
         if (isset($_COOKIE['sectionvisible_'.$course->id])) {
             $sectionvisible = $_COOKIE['sectionvisible_'.$course->id];
-        } else if ($course->marker > 0) {
+        } elseif ($course->marker > 0) {
             $sectionvisible = $course->marker;
         } else {
             $sectionvisible = 1;
@@ -371,8 +388,11 @@ class format_buttons_renderer extends format_topics_renderer {
                 $url = new moodle_url('/course/changenumsections.php', array('courseid' => $course->id,
                     'increase' => false, 'sesskey' => sesskey()));
                 $icon = $this->output->pix_icon('t/switch_minus', $strremovesection);
-                echo html_writer::link($url, $icon.get_accesshide($strremovesection),
-                array('class' => 'reduce-sections'));
+                echo html_writer::link(
+                    $url,
+                    $icon.get_accesshide($strremovesection),
+                array('class' => 'reduce-sections')
+                );
             }
             echo html_writer::end_tag('div');
         } else {
@@ -383,5 +403,4 @@ class format_buttons_renderer extends format_topics_renderer {
             $PAGE->requires->js_init_call('M.format_buttons.init', array($course->numsections));
         }
     }
-
 }

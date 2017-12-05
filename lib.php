@@ -34,7 +34,8 @@ require_once($CFG->dirroot. '/course/format/topics/lib.php');
  * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_buttons extends format_topics {
+class format_buttons extends format_topics
+{
 
     /**
      * course_format_options
@@ -42,7 +43,8 @@ class format_buttons extends format_topics {
      * @param bool $foreditform
      * @return array
      */
-    public function course_format_options($foreditform = false) {
+    public function course_format_options($foreditform = false)
+    {
         global $PAGE;
         static $courseformatoptions = false;
         if ($courseformatoptions === false) {
@@ -74,7 +76,7 @@ class format_buttons extends format_topics {
             for ($i = 1; $i <= 6; $i++) {
                 $divisortext = get_config('format_buttons', 'divisortext'.$i);
                 if (!$divisortext) {
-                     $divisortext = '';
+                    $divisortext = '';
                 }
                 $courseformatoptions['divisortext'.$i] = array(
                     'default' => $divisortext,
@@ -215,7 +217,8 @@ class format_buttons extends format_topics {
      * @param stdClass $oldcourse
      * @return bool
      */
-    public function update_course_format_options($data, $oldcourse = null) {
+    public function update_course_format_options($data, $oldcourse = null)
+    {
         global $DB;
         $data = (array)$data;
         if ($oldcourse !== null) {
@@ -225,7 +228,7 @@ class format_buttons extends format_topics {
                 if (!array_key_exists($key, $data)) {
                     if (array_key_exists($key, $oldcourse)) {
                         $data[$key] = $oldcourse[$key];
-                    } else if ($key === 'numsections') {
+                    } elseif ($key === 'numsections') {
                         $maxsection = $DB->get_field_sql('SELECT max(section) from
                         {course_sections} WHERE course = ?', array($this->courseid));
                         if ($maxsection) {
@@ -256,7 +259,8 @@ class format_buttons extends format_topics {
      * @param array $options
      * @return null|moodle_url
      */
-    public function get_view_url($section, $options = array()) {
+    public function get_view_url($section, $options = array())
+    {
         global $CFG;
         $course = $this->get_course();
         $url = new moodle_url('/course/view.php', array('id' => $course->id));
@@ -292,5 +296,4 @@ class format_buttons extends format_topics {
         }
         return $url;
     }
-
 }

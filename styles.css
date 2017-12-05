@@ -30,28 +30,33 @@
     border-left: 0;
     border-right: 0;
 }
+
 .course-content ul.buttons span.above li.section {
     border: 0;
     display: block;
     margin-bottom: 30px;
     padding-bottom: 0;
 }
+
 .course-content ul.buttons span.below li.section {
     border: 0;
     display: block;
     margin-top: 35px;
 }
+
 .course-content ul.buttons .content ul.section {
     margin: 1em 0;
 }
+
 #divsectionediting {
     display: table;
-    background: #ea272a;
+    background: #b93f41;
     border-radius: 5px;
     margin: 10px 0 40px 0;
     width: calc(100% - 20px);
     padding: 10px;
 }
+
 #buttonsectionediting {
     text-align: center;
     vertical-align: middle;
@@ -62,13 +67,15 @@
     font-style: italic;
     display: table-cell;
 }
+
 #buttonsectioncontainer {
     display: none;
     margin: 20px auto;
 }
+
 #buttonsectioncontainer .buttonsection {
-    background: rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.6);
+    background: #eff2f4;
+    color: #7b848c;
     display: inline-block;
     text-align: center;
     width: 52px;
@@ -83,10 +90,12 @@
     margin: 0 5px 10px 5px;
     vertical-align: top;
 }
+
 #buttonsectioncontainer .buttonsection:hover {
-    background: rgba(0, 0, 0, 0.3);
-    color: rgba(0, 0, 0, 0.8);
+    background: #c4cacd;
+    color: #535b62;
 }
+
 #buttonsectioncontainer .buttonsection.sectionhidden {
     width: 54px;
     height: 54px;
@@ -94,9 +103,10 @@
     border: 2px solid;
     background: none;
     cursor: default;
-    color: rgba(0, 0, 0, 0.2);
+    color: rgba(0, 0, 0, 0.15);
     border-color: rgba(0, 0, 0, 0.1);
 }
+
 #buttonsectioncontainer .divisorsection {
     display: inline-block;
     padding: 0;
@@ -104,6 +114,7 @@
     height: 52px;
     margin: 0 4px 10px 25px;
 }
+
 #buttonsectioncontainer .divisortext {
     display: table-cell;
     vertical-align: middle;
@@ -116,17 +127,22 @@
     text-align: right;
     color: rgba(0, 0, 0, 0.6);
 }
+
 /* colors */
+
 #buttonsectioncontainer .buttonsection.current {
-    background: #007193;
+    background: #115898;
     color: #fff;
 }
+
 #buttonsectioncontainer .buttonsection.sectionvisible {
-    background: #00acdf;
+    background: #1177d1;
     color: #fff;
-    border-color: #00acdf;
+    border-color: #1177d1;
 }
+
 /* editing */
+
 .editing .course-content ul.buttons li.section.main {
     display: block;
 }
