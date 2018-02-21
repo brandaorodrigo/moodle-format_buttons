@@ -18,8 +18,8 @@
  * format_buttons
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2017 Rodrigo Brandão
+ * @author     Rodrigo Brandão
+ * @copyright  2018 Rodrigo Brandão (https://www.linkedin.com/in/brandaorodrigo)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -82,13 +82,21 @@
     line-height: 52px;
     height: 52px;
     overflow: hidden;
-    border-radius: 100%;
     cursor: pointer;
+    border-radius: 100%;
     font-size: 22px;
     padding: 0;
     font-weight: bold;
     margin: 0 5px 10px 5px;
     vertical-align: top;
+}
+
+#buttonsectioncontainer.circle .buttonsection {
+    border-radius: 100%;
+}
+
+#buttonsectioncontainer.square .buttonsection {
+    border-radius: 10%;
 }
 
 #buttonsectioncontainer .buttonsection:hover {

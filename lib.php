@@ -18,10 +18,11 @@
  * format_buttons
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2017 Rodrigo Brandão
+ * @author     Rodrigo Brandão
+ * @copyright  2018 Rodrigo Brandão (https://www.linkedin.com/in/brandaorodrigo)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot. '/course/format/topics/lib.php');
@@ -73,7 +74,11 @@ class format_buttons extends format_topics
                 'default' => get_config('format_buttons', 'sectiontype'),
                 'type' => PARAM_TEXT,
             );
-            for ($i = 1; $i <= 6; $i++) {
+            $courseformatoptions['buttonstyle'] = array(
+                'default' => get_config('format_buttons', 'buttonstyle'),
+                'type' => PARAM_TEXT,
+            );
+            for ($i = 1; $i <= 12; $i++) {
                 $divisortext = get_config('format_buttons', 'divisortext'.$i);
                 if (!$divisortext) {
                     $divisortext = '';
@@ -178,7 +183,18 @@ class format_buttons extends format_topics
                     ),
                 ),
             );
-            for ($i = 1; $i <= 6; $i++) {
+            $courseformatoptionsedit['buttonstyle'] = array(
+                'label' => get_string('buttonstyle', 'format_buttons'),
+                'help_component' => 'format_buttons',
+                'element_type' => 'select',
+                'element_attributes' => array(
+                    array(
+                        'circle' => get_string('circle', 'format_buttons'),
+                        'square' => get_string('square', 'format_buttons'),
+                    ),
+                ),
+            );
+            for ($i = 1; $i <= 12; $i++) {
                 $courseformatoptionsedit['divisortext'.$i] = array(
                     'label' => get_string('divisortext', 'format_buttons').' '.$i,
                     'help' => 'divisortext',

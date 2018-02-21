@@ -18,8 +18,8 @@
  * format_buttons
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2017 Rodrigo Brandão
+ * @author     Rodrigo Brandão
+ * @copyright  2018 Rodrigo Brandão (https://www.linkedin.com/in/brandaorodrigo)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -66,3 +66,7 @@ $string['sectiontype'] = 'Estilo de lista';
 $string['numeric'] = 'Numérico';
 $string['roman'] = 'Números romanos';
 $string['alphabet'] = 'Alfabeto';
+$string['buttonstyle'] = 'Estilo del botón';
+$string['buttonstyle_help'] = 'Define la forma geométrica de los botones.';
+$string['circle'] = 'Circulo';
+$string['square'] = 'Plaza';

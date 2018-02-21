@@ -15,13 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * format_buttons_renderer
+ * format_buttons
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigobrandao.com.br)
- * @copyright  2017 Rodrigo Brandão
+ * @author     Rodrigo Brandão
+ * @copyright  2018 Rodrigo Brandão (https://www.linkedin.com/in/brandaorodrigo)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->dirroot.'/course/format/topics/renderer.php');
@@ -79,7 +80,7 @@ class format_buttons_renderer extends format_topics_renderer
             $html .= html_writer::tag('style', $css);
         }
         $withoutdivisor = true;
-        for ($k = 1; $k <= 6; $k++) {
+        for ($k = 1; $k <= 12; $k++) {
             if ($course->{'divisor'.$k}) {
                 $withoutdivisor = false;
             }
@@ -149,7 +150,7 @@ class format_buttons_renderer extends format_topics_renderer
             $html .= html_writer::tag('div', $name, array('id' => $id, 'class' => $class, 'onclick' => $onclick));
             $count++;
         }
-        $html = html_writer::tag('div', $html, array('id' => 'buttonsectioncontainer', 'class' => 'square'));
+        $html = html_writer::tag('div', $html, array('id' => 'buttonsectioncontainer', 'class' => $course->buttonstyle));
         if ($PAGE->user_is_editing()) {
             $buttonsectionediting = html_writer::tag(
                 'div',
@@ -280,7 +281,7 @@ class format_buttons_renderer extends format_topics_renderer
             $url = new moodle_url('/course/editsection.php', array('id' => $section->id, 'sr' => $sectionreturn));
             $o .= html_writer::link(
                 $url,
-                html_writer::empty_tag('img', array('src' => $this->output->pix_url('i/settings'),
+                html_writer::empty_tag('img', array('src' => $this->output->image_url('i/settings'),
                 'class' => 'edit', 'alt' => get_string('edit'))),
                 array('title' => get_string('editsummary'))
             );
