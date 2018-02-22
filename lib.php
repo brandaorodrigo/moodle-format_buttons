@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * format_buttons
+ * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão
- * @copyright  2018 Rodrigo Brandão (https://www.linkedin.com/in/brandaorodrigo)
+ * @author     Rodrigo Brandão (rodrigo_brandao@me.com)
+ * @copyright  2018 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
