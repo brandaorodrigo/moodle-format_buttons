@@ -46,7 +46,23 @@ M.format_buttons.hide = function() {
 M.format_buttons.show = function(id, courseid) {
     this.hide();
     var buttonsection = document.getElementById('buttonsection-' + id);
+    var currentsection = document.getElementById('section-' + id);
     buttonsection.setAttribute('class', buttonsection.getAttribute('class') + ' sectionvisible');
-    document.getElementById('section-' + id).style.display = 'block';
+    currentsection.style.display = 'block';
     document.cookie = 'sectionvisible_' + courseid + '=' + id + '; path=/';
+    M.format_buttons.h5p();
+};
+
+M.format_buttons.h5p = function() {
+    window.h5pResizerInitialized = false;
+    var iframes = document.getElementsByTagName('iframe');
+    var ready = {
+        context: 'h5p',
+        action: 'ready'
+    };
+    for (var i = 0; i < iframes.length; i++) {
+        if (iframes[i].src.indexOf('h5p') !== -1) {
+            iframes[i].contentWindow.postMessage(ready, '*');
+        }
+    }
 };
