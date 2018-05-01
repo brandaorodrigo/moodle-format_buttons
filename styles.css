@@ -123,6 +123,15 @@
     margin: 0 4px 10px 25px;
 }
 
+#buttonsectioncontainer .divisorsection.inlinebuttonsections {
+    display: inline;
+}
+
+#buttonsectioncontainer .divisorsection.inlinebuttonsections::before {
+    content: "\A";
+    white-space: pre;
+}
+
 #buttonsectioncontainer .divisortext {
     display: table-cell;
     vertical-align: middle;

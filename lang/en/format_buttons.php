@@ -36,6 +36,8 @@ $string['showfromothers'] = 'Show topic';
 $string['showdefaultsectionname'] = 'Show the default sections name';
 $string['showdefaultsectionname_help'] = 'If no name is set for the section will not show anything.<br>
 By definition an unnamed topic is displayed as <strong>Topic [N]</strong>.';
+$string['inlinesections'] = 'Inline sections';
+$string['inlinesections_help'] = 'Give each section a new line.';
 $string['yes'] = 'Yes';
 $string['no'] = 'No';
 $string['sectionposition'] = 'Section zero position';

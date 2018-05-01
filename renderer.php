@@ -100,6 +100,7 @@ class format_buttons_renderer extends format_topics_renderer
         $count = 1;
         $currentdivisor = 1;
         $modinfo = get_fast_modinfo($course);
+        $inline = '';
         foreach ($modinfo->get_section_info_all() as $section => $thissection) {
             if ($section == 0) {
                 continue;
@@ -121,7 +122,10 @@ class format_buttons_renderer extends format_topics_renderer
                 $currentdivisorhtml = $course->{'divisortext' . $currentdivisor};
                 $currentdivisorhtml = str_replace('[br]', '<br>', $currentdivisorhtml);
                 $currentdivisorhtml = html_writer::tag('div', $currentdivisorhtml, ['class' => 'divisortext']);
-                $html .= html_writer::tag('div', $currentdivisorhtml, ['class' => 'divisorsection']);
+                if ($course->inlinesections) {
+                    $inline = 'inlinebuttonsections';
+                }
+                $html .= html_writer::tag('div', $currentdivisorhtml, ['class' => "divisorsection $inline"]);
                 $divisorshow[$currentdivisor] = true;
             }
             $id = 'buttonsection-' . $section;
