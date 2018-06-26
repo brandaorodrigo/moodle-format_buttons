@@ -18,15 +18,15 @@
  * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigo_brandao@me.com)
+ * @author     Rodrigo Brandão <rodrigo_brandao@me.com>
  * @copyright  2018 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->requires = 2015111610; /* moodle 3.0 */
+$plugin->requires = 2014111000; /* moodle 2.8 */
 $plugin->component = 'format_buttons';
 $plugin->maturity = MATURITY_STABLE;
-$plugin->release = '(Build: 2018022400)';
-$plugin->version = 2018022400;
+$plugin->release = '(Build: 2018062600)';
+$plugin->version = 2018062600;

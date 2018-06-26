@@ -18,7 +18,7 @@
  * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigo_brandao@me.com)
+ * @author     Rodrigo Brandão <rodrigo_brandao@me.com>
  * @copyright  2018 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -100,7 +100,6 @@ class format_buttons_renderer extends format_topics_renderer
         $count = 1;
         $currentdivisor = 1;
         $modinfo = get_fast_modinfo($course);
-        $inline = '';
         foreach ($modinfo->get_section_info_all() as $section => $thissection) {
             if ($section == 0) {
                 continue;
@@ -122,10 +121,7 @@ class format_buttons_renderer extends format_topics_renderer
                 $currentdivisorhtml = $course->{'divisortext' . $currentdivisor};
                 $currentdivisorhtml = str_replace('[br]', '<br>', $currentdivisorhtml);
                 $currentdivisorhtml = html_writer::tag('div', $currentdivisorhtml, ['class' => 'divisortext']);
-                if ($course->inlinesections) {
-                    $inline = 'inlinebuttonsections';
-                }
-                $html .= html_writer::tag('div', $currentdivisorhtml, ['class' => "divisorsection $inline"]);
+                $html .= html_writer::tag('div', $currentdivisorhtml, ['class' => 'divisorsection']);
                 $divisorshow[$currentdivisor] = true;
             }
             $id = 'buttonsection-' . $section;
@@ -168,8 +164,7 @@ class format_buttons_renderer extends format_topics_renderer
         }
         $html = html_writer::tag('div', $html, ['id' => 'buttonsectioncontainer', 'class' => $course->buttonstyle]);
         if ($PAGE->user_is_editing()) {
-            $buttonsectionediting = html_writer::tag('div', get_string('editing', 'format_buttons'), ['id' => 'buttonsectionediting']);
-            $html .= html_writer::tag('div', $buttonsectionediting, ['id' => 'divsectionediting']);
+            $html .= html_writer::tag('div', get_string('editing', 'format_buttons'), ['class' => 'alert alert-warning alert-block fade in']);
         }
         return $html;
     }

@@ -18,7 +18,7 @@
  * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigo_brandao@me.com)
+ * @author     Rodrigo Brandão <rodrigo_brandao@me.com>
  * @copyright  2018 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -36,8 +36,6 @@ $string['showfromothers'] = 'Show topic';
 $string['showdefaultsectionname'] = 'Show the default sections name';
 $string['showdefaultsectionname_help'] = 'If no name is set for the section will not show anything.<br>
 By definition an unnamed topic is displayed as <strong>Topic [N]</strong>.';
-$string['inlinesections'] = 'Inline sections';
-$string['inlinesections_help'] = 'Give each section a new line.';
 $string['yes'] = 'Yes';
 $string['no'] = 'No';
 $string['sectionposition'] = 'Section zero position';

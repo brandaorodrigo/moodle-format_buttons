@@ -18,7 +18,7 @@
  * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigo_brandao@me.com)
+ * @author     Rodrigo Brandão <rodrigo_brandao@me.com>
  * @copyright  2018 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -48,34 +48,14 @@
     margin: 1em 0;
 }
 
-#divsectionediting {
-    display: table;
-    background: #b93f41;
-    border-radius: 5px;
-    margin: 10px 0 40px 0;
-    width: calc(100% - 20px);
-    padding: 10px;
-}
-
-#buttonsectionediting {
-    text-align: center;
-    vertical-align: middle;
-    line-height: 18px;
-    color: #fff;
-    font-size: 14px;
-    letter-spacing: 1px;
-    font-style: italic;
-    display: table-cell;
-}
-
 #buttonsectioncontainer {
     display: none;
     margin: 20px auto;
 }
 
 #buttonsectioncontainer .buttonsection {
-    background: #eff2f4;
-    color: #7b848c;
+    background: #dee3e8;
+    color: #7a8188;
     display: inline-block;
     text-align: center;
     width: 52px;
@@ -83,7 +63,6 @@
     height: 52px;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 100%;
     font-size: 22px;
     padding: 0;
     font-weight: bold;
@@ -95,24 +74,20 @@
     border-radius: 100%;
 }
 
-#buttonsectioncontainer.square .buttonsection {
-    border-radius: 10%;
-}
-
 #buttonsectioncontainer .buttonsection:hover {
-    background: #c4cacd;
-    color: #535b62;
+    background: #bac1c5;
+    color: #fff;
 }
 
 #buttonsectioncontainer .buttonsection.sectionhidden {
-    width: 54px;
-    height: 54px;
+    width: 53px;
+    height: 53px;
     line-height: 50px;
     border: 2px solid;
     background: none;
     cursor: default;
-    color: rgba(0, 0, 0, 0.15);
-    border-color: rgba(0, 0, 0, 0.1);
+    color: #b7bdc3;
+    border-color: #d3d9df;
 }
 
 #buttonsectioncontainer .divisorsection {
@@ -121,15 +96,6 @@
     overflow-y: hidden;
     height: 52px;
     margin: 0 4px 10px 25px;
-}
-
-#buttonsectioncontainer .divisorsection.inlinebuttonsections {
-    display: inline;
-}
-
-#buttonsectioncontainer .divisorsection.inlinebuttonsections::before {
-    content: "\A";
-    white-space: pre;
 }
 
 #buttonsectioncontainer .divisortext {

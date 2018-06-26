@@ -18,7 +18,7 @@
  * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão (rodrigo_brandao@me.com)
+ * @author     Rodrigo Brandão <rodrigo_brandao@me.com>
  * @copyright  2018 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
