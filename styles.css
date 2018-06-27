@@ -124,6 +124,15 @@
     border-color: #1177d1;
 }
 
+#buttonsectioncontainer .divisorsection.inlinebuttonsections {
+    display: inline;
+}
+
+#buttonsectioncontainer .divisorsection.inlinebuttonsections::before {
+    content: "\A";
+    white-space: pre;
+}
+
 /* editing */
 
 .editing .course-content ul.buttons li.section.main {

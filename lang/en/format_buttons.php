@@ -46,12 +46,12 @@ Use this option if you want to add some text or resource after the visible secti
 <i>Example: Resources or links to be displayed regardless of the visible section.</i><br><br>';
 $string['above'] = 'Above the list buttons';
 $string['below'] = 'Below the visible section';
-$string['divisortext'] = 'Title of the grouping';
+$string['divisor'] = 'Number of sections to group - {$a}';
+$string['divisortext'] = 'Title of the grouping - {$a}';
 $string['divisortext_help'] = 'The grouping sections is used to separate section by type or modules.
 <i>Example: The course has 10 sections divided into two modules: Theoretical (with 5 sections) and Practical (with 5 sections).<br>
 Define the title like "Teorical" and set the number of sections to 5.</i><br><br>
 Tip: if you want to use the tag <strong>&lt;br&gt;</strong>, type [br].';
-$string['divisor'] = 'Number of sections to group';
 $string['colorcurrent'] = 'Color of the current section button';
 $string['colorcurrent_help'] = 'The current section is the section marked with highlight.<br>Define a color in hexadecimal.
 <i>Example: #fab747</i><br>If you want to use the default color, leave empty.';
@@ -70,3 +70,5 @@ $string['buttonstyle'] = 'Button style';
 $string['buttonstyle_help'] = 'Define the shape style of the buttons.';
 $string['circle'] = 'Circle';
 $string['square'] = 'Square';
+$string['inlinesections'] = 'Inline sections';
+$string['inlinesections_help'] = 'Give each section a new line.';

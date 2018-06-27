@@ -35,8 +35,8 @@ $string['colorvisible_help'] = 'LA sección visible es la sección sleccionada.<
 <i>Ejemplo: #747fab</i><br>Si Usted desea usar el color por defecto, déjelo vacío.';
 $string['currentsection'] = 'Este tópico';
 $string['deletesection'] = 'Eliminar tópico';
-$string['divisor'] = 'Número de secciones a agrupar';
-$string['divisortext'] = 'Título del agrupamiento';
+$string['divisor'] = 'Número de secciones a agrupar - {$a}';
+$string['divisortext'] = 'Título del agrupamiento - {$a}';
 $string['divisortext_help'] = 'El agrupamiento de secciones se usa para separar secciones por tipo o por módulos.
 <i>Ejemplo: El curso tiene 10 secciones, divididas en dos módulos: Teórico (con 5 secciones) y Práctico (con 5 secciones).<br>
 Defina el título con "Teórico" y configure el número de secciones a 5.</i><br><br>
@@ -70,3 +70,5 @@ $string['buttonstyle'] = 'Estilo del botón';
 $string['buttonstyle_help'] = 'Define la forma geométrica de los botones.';
 $string['circle'] = 'Circulo';
 $string['square'] = 'Plaza';
+$string['inlinesections'] = 'Secciones separadas en líneas';
+$string['inlinesections_help'] = 'Muestra cada sección en una línea.';

@@ -46,12 +46,12 @@ Abaixo da seção visível</strong><br>Use esta opção se você deseja adiciona
 <i>Exemplo: Recursos ou links a serem exibidos independentes da seção visível.</i><br>';
 $string['above'] = 'Acima da lista de botões';
 $string['below'] = 'Abaixo da seção visível';
-$string['divisortext'] = 'Título do agrupamento';
+$string['divisor'] = 'Número de seções a agrupar - {$a}';
+$string['divisortext'] = 'Título do agrupamento - {$a}';
 $string['divisortext_help'] = 'As seções agrupadas são usadas para separar seção por tipo ou módulos.
 <i>Exemplo: O curso possuiu 10 seções divididas em 2 módulos: Teórico (com 5 seções) e Prático (com 5 seções).<br>
 Defina o título com "Teórico" e configure o número de seções para 5.</i><br><br>
 Dica: se você desejar usar a tag <strong>&lt;br&gt;</strong> digite <strong>[br]</strong>.';
-$string['divisor'] = 'Número de seções a agrupar';
 $string['colorcurrent'] = 'Cor do botão de seção atual';
 $string['colorcurrent_help'] = 'A seção atual é a seção marcada com destaque. <br> Defina uma cor em hexadecimal.
 <i>Exemplo: #fab747</i><br>Se quiser usar a cor padrão deixe em branco.';
@@ -70,3 +70,5 @@ $string['buttonstyle'] = 'Estilo do botão';
 $string['buttonstyle_help'] = 'Define qual a forma geométrica dos botões.';
 $string['circle'] = 'Círculo';
 $string['square'] = 'Quadrado';
+$string['inlinesections'] = 'Seções separadas em linhas';
+$string['inlinesections_help'] = 'Exibe cada seção em uma linha.';
