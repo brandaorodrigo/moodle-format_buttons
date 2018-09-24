@@ -72,3 +72,7 @@ $string['circle'] = 'Circle';
 $string['square'] = 'Square';
 $string['inlinesections'] = 'Inline sections';
 $string['inlinesections_help'] = 'Give each section a new line.';
+/*
+ * GDPR compliant
+ */
+$string['privacy:no_data_reason'] = "The format buttons plugin doesn't store any personal data.";
