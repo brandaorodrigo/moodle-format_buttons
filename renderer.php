@@ -119,7 +119,7 @@ class format_buttons_renderer extends format_topics_renderer
             if (isset($course->{'divisor' . $currentdivisor}) &&
                 $course->{'divisor' . $currentdivisor} != 0 &&
                 !isset($divisorshow[$currentdivisor])) {
-                $currentdivisorhtml = $course->{'divisortext' . $currentdivisor};
+                $currentdivisorhtml = format_string($course->{'divisortext' . $currentdivisor});
                 $currentdivisorhtml = str_replace('[br]', '<br>', $currentdivisorhtml);
                 $currentdivisorhtml = html_writer::tag('div', $currentdivisorhtml, ['class' => 'divisortext']);
                 if ($course->inlinesections) {
