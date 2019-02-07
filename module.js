@@ -47,7 +47,7 @@ M.format_buttons.show = function(id, courseid) {
     this.hide();
     var buttonsection = document.getElementById('buttonsection-' + id);
     var currentsection = document.getElementById('section-' + id);
-    buttonsection.setAttribute('class', buttonsection.getAttribute('class') + ' sectionvisible');
+    buttonsection.setAttribute('class', buttonsection.getAttribute('class').trim() + ' sectionvisible');
     currentsection.style.display = 'block';
     document.cookie = 'sectionvisible_' + courseid + '=' + id + '; path=/';
     M.format_buttons.h5p();
