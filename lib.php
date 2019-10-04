@@ -18,8 +18,8 @@
  * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão <rodrigo_brandao@me.com>
- * @copyright  2018 Rodrigo Brandão
+ * @author     Rodrigo Brandão <https://www.linkedin.com/in/brandaorodrigo>
+ * @copyright  2019 Rodrigo Brandão <brandrod@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -35,8 +35,7 @@ require_once($CFG->dirroot. '/course/format/topics/lib.php');
  * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_buttons extends format_topics
-{
+class format_buttons extends format_topics {
 
     /**
      * course_format_options
@@ -44,44 +43,54 @@ class format_buttons extends format_topics
      * @param bool $foreditform
      * @return array
      */
-    public function course_format_options($foreditform = false)
-    {
+    public function course_format_options($foreditform = false) {
         global $PAGE;
+
         static $courseformatoptions = false;
+
         if ($courseformatoptions === false) {
             $courseconfig = get_config('moodlecourse');
+
             $courseformatoptions['numsections'] = array(
                 'default' => $courseconfig->numsections,
                 'type' => PARAM_INT,
             );
+
             $courseformatoptions['hiddensections'] = array(
                 'default' => $courseconfig->hiddensections,
                 'type' => PARAM_INT,
             );
+
             $courseformatoptions['showdefaultsectionname'] = array(
                 'default' => get_config('format_buttons', 'showdefaultsectionname'),
                 'type' => PARAM_INT,
             );
+
             $courseformatoptions['sectionposition'] = array(
                 'default' => get_config('format_buttons', 'sectionposition'),
                 'type' => PARAM_INT,
             );
+
             $courseformatoptions['inlinesections'] = array(
                 'default' => get_config('format_buttons', 'inlinesections'),
                 'type' => PARAM_INT,
             );
+
             $courseformatoptions['sequential'] = array(
                 'default' => get_config('format_buttons', 'sequential'),
                 'type' => PARAM_INT,
             );
+
             $courseformatoptions['sectiontype'] = array(
                 'default' => get_config('format_buttons', 'sectiontype'),
                 'type' => PARAM_TEXT,
             );
+
             $courseformatoptions['buttonstyle'] = array(
                 'default' => get_config('format_buttons', 'buttonstyle'),
                 'type' => PARAM_TEXT,
             );
+
             for ($i = 1; $i <= 12; $i++) {
                 $divisortext = get_config('format_buttons', 'divisortext'.$i);
                 if (!$divisortext) {
@@ -96,38 +105,47 @@ class format_buttons extends format_topics
                     'type' => PARAM_INT,
                 );
             }
+
             $colorcurrent = get_config('format_buttons', 'colorcurrent');
             if (!$colorcurrent) {
                 $colorcurrent = '';
             }
+
             $courseformatoptions['colorcurrent'] = array(
                 'default' => $colorcurrent,
                 'type' => PARAM_TEXT,
             );
+
             $colorvisible = get_config('format_buttons', 'colorvisible');
             if (!$colorvisible) {
                 $colorvisible = '';
             }
+
             $courseformatoptions['colorvisible'] = array(
                 'default' => $colorvisible,
                 'type' => PARAM_TEXT,
             );
         }
+
         if ($foreditform && !isset($courseformatoptions['coursedisplay']['label'])) {
             $courseconfig = get_config('moodlecourse');
+
             $max = $courseconfig->maxsections;
             if (!isset($max) || !is_numeric($max)) {
                 $max = 52;
             }
+
             $sectionmenu = array();
             for ($i = 0; $i <= $max; $i++) {
                 $sectionmenu[$i] = "$i";
             }
+
             $courseformatoptionsedit['numsections'] = array(
                 'label' => new lang_string('numberweeks'),
                 'element_type' => 'select',
                 'element_attributes' => array($sectionmenu),
             );
+
             $courseformatoptionsedit['hiddensections'] = array(
                 'label' => new lang_string('hiddensections'),
                 'help' => 'hiddensections',
@@ -140,6 +158,7 @@ class format_buttons extends format_topics
                     )
                 ),
             );
+
             $courseformatoptionsedit['showdefaultsectionname'] = array(
                 'label' => get_string('showdefaultsectionname', 'format_buttons'),
                 'help' => 'showdefaultsectionname',
@@ -152,6 +171,7 @@ class format_buttons extends format_topics
                     ),
                 ),
             );
+
             $courseformatoptionsedit['sectionposition'] = array(
                 'label' => get_string('sectionposition', 'format_buttons'),
                 'help' => 'sectionposition',
@@ -164,6 +184,7 @@ class format_buttons extends format_topics
                     ),
                 ),
             );
+
             $courseformatoptionsedit['inlinesections'] = array(
                 'label' => get_string('inlinesections', 'format_buttons'),
                 'help' => 'inlinesections',
@@ -176,6 +197,7 @@ class format_buttons extends format_topics
                     ),
                 ),
             );
+
             $courseformatoptionsedit['sequential'] = array(
                 'label' => get_string('sequential', 'format_buttons'),
                 'help_component' => 'format_buttons',
@@ -187,6 +209,7 @@ class format_buttons extends format_topics
                     ),
                 ),
             );
+
             $courseformatoptionsedit['sectiontype'] = array(
                 'label' => get_string('sectiontype', 'format_buttons'),
                 'help_component' => 'format_buttons',
@@ -199,6 +222,7 @@ class format_buttons extends format_topics
                     ),
                 ),
             );
+
             $courseformatoptionsedit['buttonstyle'] = array(
                 'label' => get_string('buttonstyle', 'format_buttons'),
                 'help_component' => 'format_buttons',
@@ -210,6 +234,7 @@ class format_buttons extends format_topics
                     ),
                 ),
             );
+
             for ($i = 1; $i <= 12; $i++) {
                 $courseformatoptionsedit['divisortext'.$i] = array(
                     'label' => get_string('divisortext', 'format_buttons', $i),
@@ -225,18 +250,21 @@ class format_buttons extends format_topics
                     'element_attributes' => array($sectionmenu),
                 );
             }
+
             $courseformatoptionsedit['colorcurrent'] = array(
                 'label' => get_string('colorcurrent', 'format_buttons'),
                 'help' => 'colorcurrent',
                 'help_component' => 'format_buttons',
                 'element_type' => 'text',
             );
+
             $courseformatoptionsedit['colorvisible'] = array(
                 'label' => get_string('colorvisible', 'format_buttons'),
                 'help' => 'colorvisible',
                 'help_component' => 'format_buttons',
                 'element_type' => 'text',
             );
+
             $courseformatoptions = array_merge_recursive($courseformatoptions, $courseformatoptionsedit);
         }
         return $courseformatoptions;
@@ -249,18 +277,21 @@ class format_buttons extends format_topics
      * @param stdClass $oldcourse
      * @return bool
      */
-    public function update_course_format_options($data, $oldcourse = null)
-    {
+    public function update_course_format_options($data, $oldcourse = null) {
         global $DB;
+
         $data = (array)$data;
+
         if ($oldcourse !== null) {
             $oldcourse = (array)$oldcourse;
+
             $options = $this->course_format_options();
+
             foreach ($options as $key => $unused) {
                 if (!array_key_exists($key, $data)) {
                     if (array_key_exists($key, $oldcourse)) {
                         $data[$key] = $oldcourse[$key];
-                    } elseif ($key === 'numsections') {
+                    } else if ($key === 'numsections') {
                         $maxsection = $DB->get_field_sql('SELECT max(section) from
                         {course_sections} WHERE course = ?', array($this->courseid));
                         if ($maxsection) {
@@ -270,11 +301,13 @@ class format_buttons extends format_topics
                 }
             }
         }
+
         $changed = $this->update_format_options($data);
+
         if ($changed && array_key_exists('numsections', $data)) {
             $numsections = (int)$data['numsections'];
-            $maxsection = $DB->get_field_sql('SELECT max(section) from {course_sections}
-                        WHERE course = ?', array($this->courseid));
+            $sql = 'SELECT max(section) from {course_sections} WHERE course = ?';
+            $maxsection = $DB->get_field_sql($sql, array($this->courseid));
             for ($sectionnum = $maxsection; $sectionnum > $numsections; $sectionnum--) {
                 if (!$this->delete_section($sectionnum, false)) {
                     break;
@@ -291,21 +324,25 @@ class format_buttons extends format_topics
      * @param array $options
      * @return null|moodle_url
      */
-    public function get_view_url($section, $options = array())
-    {
+    public function get_view_url($section, $options = array()) {
         global $CFG;
+
         $course = $this->get_course();
+
         $url = new moodle_url('/course/view.php', array('id' => $course->id));
 
         $sr = null;
+
         if (array_key_exists('sr', $options)) {
             $sr = $options['sr'];
         }
+
         if (is_object($section)) {
             $sectionno = $section->section;
         } else {
             $sectionno = $section;
         }
+
         if ($sectionno !== null) {
             if ($sr !== null) {
                 if ($sr) {
@@ -326,6 +363,7 @@ class format_buttons extends format_topics
                 $url->set_anchor('section-'.$sectionno);
             }
         }
+
         return $url;
     }
 }
@@ -338,10 +376,11 @@ class format_buttons extends format_topics
  * @param mixed $newvalue
  * @return \core\output\inplace_editable
  */
-function format_buttons_inplace_editable($itemtype, $itemid, $newvalue)
-{
+function format_buttons_inplace_editable($itemtype, $itemid, $newvalue) {
     global $DB, $CFG;
+
     require_once($CFG->dirroot . '/course/lib.php');
+
     if ($itemtype === 'sectionname' || $itemtype === 'sectionnamenl') {
         $section = $DB->get_record_sql(
             'SELECT s.* FROM {course_sections} s JOIN {course} c ON s.course = c.id WHERE s.id = ? AND c.format = ?',
@@ -350,4 +389,5 @@ function format_buttons_inplace_editable($itemtype, $itemid, $newvalue)
         );
         return course_get_format($section->course)->inplace_editable_update_section_name($section, $itemtype, $newvalue);
     }
+    return null;
 }

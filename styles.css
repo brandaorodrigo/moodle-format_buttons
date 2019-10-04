@@ -18,34 +18,54 @@
  * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão <rodrigo_brandao@me.com>
- * @copyright  2018 Rodrigo Brandão
+ * @author     Rodrigo Brandão <https://www.linkedin.com/in/brandaorodrigo>
+ * @copyright  2019 Rodrigo Brandão <brandrod@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+.course-content ul.buttons {
+    margin: 0;
+    list-style: none;
+}
 
-.course-content ul.buttons li.section.main {
+.course-content ul.buttons li.section .content {
+    margin: 0 40px;
+}
+
+.course-content ul.buttons li.section .left,
+.course-content ul.buttons li.section .right {
+    width: 40px;
+    padding: 0 6px;
+}
+
+.course-content ul.buttons li.section .left {
+    padding-top: 22px;
+    text-align: right;
+}
+
+.jsenabled .course-content ul.buttons li.section .left,
+.jsenabled .course-content ul.buttons li.section .right {
+    width: auto;
+}
+
+.course-content ul.buttons li.section .left .section-handle img.icon {
+    padding: 0;
+    vertical-align: baseline;
+}
+
+.course-content ul.buttons li.section .section_action_menu .textmenu,
+.course-content ul.buttons li.section .section_action_menu .menu-action-text {
+    white-space: nowrap;
+}
+
+.course-content ul li.section.main {
     background: none;
     list-style: none;
     display: none;
-    border-left: 0;
-    border-right: 0;
+    border: 0 !important;
 }
 
-.course-content ul.buttons span.above li.section {
-    border: 0;
-    display: block;
-    margin-bottom: 30px;
-    padding-bottom: 0;
-}
-
-.course-content ul.buttons span.below li.section {
-    border: 0;
-    display: block;
-    margin-top: 35px;
-}
-
-.course-content ul.buttons .content ul.section {
-    margin: 1em 0;
+.editing .course-content ul li.section.main {
+    border-bottom: 1px dotted #dee2e6 !important;
 }
 
 #buttonsectioncontainer {
@@ -112,7 +132,6 @@
 }
 
 /* colors */
-
 #buttonsectioncontainer .buttonsection.current {
     background: #115898;
     color: #fff;
@@ -134,7 +153,6 @@
 }
 
 /* editing */
-
 .editing .course-content ul.buttons li.section.main {
     display: block;
 }

@@ -18,8 +18,8 @@
  * format_buttons_renderer
  *
  * @package    format_buttons
- * @author     Rodrigo Brandão <rodrigo_brandao@me.com>
- * @copyright  2018 Rodrigo Brandão
+ * @author     Rodrigo Brandão <https://www.linkedin.com/in/brandaorodrigo>
+ * @copyright  2019 Rodrigo Brandão <brandrod@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -34,17 +34,24 @@ if ($topic = optional_param('topic', 0, PARAM_INT)) {
     debugging('Outdated topic param passed to course/view.php', DEBUG_DEVELOPER);
     redirect($url);
 }
+
 $context = context_course::instance($course->id);
+
 if (($marker >= 0) && has_capability('moodle/course:setcurrentsection', $context) && confirm_sesskey()) {
     $course->marker = $marker;
     course_set_marker($course->id, $marker);
 }
+
 $course = course_get_format($course)->get_course();
+
 course_create_sections_if_missing($course, range(0, $course->numsections));
+
 $renderer = $PAGE->get_renderer('format_buttons');
+
 if (!empty($displaysection)) {
     $renderer->print_single_section_page($course, null, null, null, null, $displaysection);
 } else {
     $renderer->print_multiple_section_page($course, null, null, null, null);
 }
+
 $PAGE->requires->js('/course/format/buttons/format.js');
