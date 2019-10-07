@@ -32,15 +32,30 @@ M.format_buttons.init = function(Y, numsections, currentsection, courseid) {
     this.numsections = parseInt(numsections);
     document.getElementById('buttonsectioncontainer').style.display = 'table';
 
-    var hash = window.location.hash.substr(1);
-    if (hash.indexOf('section-') !== -1) {
-        currentsection = hash.replace('section-', '');
-        currentsection = parseInt(currentsection)
+    var findHash = function (href) {
+        var id = null;
+        if (href.indexOf('#section-') !== 0) {
+            var split = href.split('#section-');
+            id = split[1];
+        }
+        return id;
+    };
+
+    var hash = findHash(window.location.href);
+    if (hash) {
+        currentsection = hash;
     }
 
     if (currentsection) {
-        M.format_buttons.show(currentsection, courseid)
+        M.format_buttons.show(currentsection, courseid);
     }
+
+    Y.delegate('click', function (e) {
+        var href = e.currentTarget.get('href');
+        currentsection = findHash(href);
+        M.format_buttons.show(currentsection, courseid)
+    }, '[data-region="drawer"]', '[data-type="30"]');
+
 };
 
 M.format_buttons.hide = function() {
