@@ -423,9 +423,8 @@ class format_buttons_renderer extends format_topics_renderer
         } else {
             echo $this->end_section_list();
         }
-        echo html_writer::tag('style', '.course-content ul.buttons #section-'.$sectionvisible.' { display: block; }');
         if (!$PAGE->user_is_editing()) {
-            $PAGE->requires->js_init_call('M.format_buttons.init', [$course->numsections]);
+            $PAGE->requires->js_init_call('M.format_buttons.init', [$course->numsections, $sectionvisible, $course->id]);
         }
         // button format - end
     }

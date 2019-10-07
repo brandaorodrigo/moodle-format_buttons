@@ -27,10 +27,20 @@ M.format_buttons = M.format_buttons || {
     numsections: 0
 };
 
-M.format_buttons.init = function(Y, numsections) {
+M.format_buttons.init = function(Y, numsections, currentsection, courseid) {
     this.ourYUI = Y;
     this.numsections = parseInt(numsections);
     document.getElementById('buttonsectioncontainer').style.display = 'table';
+
+    var hash = window.location.hash.substr(1);
+    if (hash.indexOf('section-') !== -1) {
+        currentsection = hash.replace('section-', '');
+        currentsection = parseInt(currentsection)
+    }
+
+    if (currentsection) {
+        M.format_buttons.show(currentsection, courseid)
+    }
 };
 
 M.format_buttons.hide = function() {
@@ -45,12 +55,16 @@ M.format_buttons.hide = function() {
 
 M.format_buttons.show = function(id, courseid) {
     this.hide();
-    var buttonsection = document.getElementById('buttonsection-' + id);
-    var currentsection = document.getElementById('section-' + id);
-    buttonsection.setAttribute('class', buttonsection.getAttribute('class') + ' sectionvisible');
-    currentsection.style.display = 'block';
-    document.cookie = 'sectionvisible_' + courseid + '=' + id + '; path=/';
-    M.format_buttons.h5p();
+    if (id > 0) {
+        var buttonsection = document.getElementById('buttonsection-' + id);
+        var currentsection = document.getElementById('section-' + id);
+        if (buttonsection && currentsection) {
+            buttonsection.setAttribute('class', buttonsection.getAttribute('class') + ' sectionvisible');
+            currentsection.style.display = 'block';
+            document.cookie = 'sectionvisible_' + courseid + '=' + id + '; path=/';
+            M.format_buttons.h5p();
+        }
+    }
 };
 
 M.format_buttons.h5p = function() {

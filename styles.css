@@ -57,7 +57,7 @@
     white-space: nowrap;
 }
 
-.course-content ul.buttons li.section.main {
+.course-content ul.buttons li.section.main:not(#section-0) {
     background: none;
     list-style: none;
     display: none;
@@ -149,7 +149,7 @@
 }
 
 /* editing */
-.editing .course-content ul.buttons li.section.main {
+.editing .course-content ul.buttons li.section.main:not(#section-0) {
     display: block;
     border-bottom: 1px dotted #dee2e6 !important;
 }
