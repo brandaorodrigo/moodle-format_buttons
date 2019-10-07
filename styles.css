@@ -57,15 +57,11 @@
     white-space: nowrap;
 }
 
-.course-content ul li.section.main {
+.course-content ul.buttons li.section.main {
     background: none;
     list-style: none;
     display: none;
     border: 0 !important;
-}
-
-.editing .course-content ul li.section.main {
-    border-bottom: 1px dotted #dee2e6 !important;
 }
 
 #buttonsectioncontainer {
@@ -155,4 +151,5 @@
 /* editing */
 .editing .course-content ul.buttons li.section.main {
     display: block;
+    border-bottom: 1px dotted #dee2e6 !important;
 }
