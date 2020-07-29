@@ -19,7 +19,7 @@
  *
  * @package    format_buttons
  * @author     Rodrigo Brandão <https://www.linkedin.com/in/brandaorodrigo>
- * @copyright  2019 Rodrigo Brandão <brandrod@gmail.com>
+ * @copyright  2020 Rodrigo Brandão <rodrigo.brandao.contato@gmail.com>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
