@@ -25,6 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+require_once($CFG->dirroot . '/course/format/lib.php'); // For format_base.
 require_once($CFG->dirroot. '/course/format/topics/lib.php');
 
 /**
@@ -35,7 +36,18 @@ require_once($CFG->dirroot. '/course/format/topics/lib.php');
  * @copyright  2017 Rodrigo Brandão
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class format_buttons extends format_topics {
+class format_buttons extends core_courseformat\base {
+
+    /**
+     * Returns the information about the ajax support. Topcoll uses ajax.
+     *
+     * @return stdClass
+     */
+    public function supports_ajax() {
+        $ajaxsupport = new stdClass();
+        $ajaxsupport->capable = true;
+        return $ajaxsupport;
+    }
 
     /**
      * course_format_options
