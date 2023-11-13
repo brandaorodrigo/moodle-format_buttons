@@ -198,6 +198,9 @@ class format_buttons_renderer extends format_topics_renderer
             if ($course->sectiontype == 'roman' && is_numeric($name)) {
                 $name = $this->number_to_roman($name);
             }
+            if ($course->sectiontype == 'sectionname' && is_numeric($name)) {
+                $name = $thissection->name;
+            }
             $class = 'buttonsection';
             $onclick = 'M.format_buttons.show(' . $section . ',' . $course->id . ')';
             if (!$thissection->available &&
