@@ -219,6 +219,7 @@ class format_buttons extends format_topics {
                         'numeric' => get_string('numeric', 'format_buttons'),
                         'roman' => get_string('roman', 'format_buttons'),
                         'alphabet' => get_string('alphabet', 'format_buttons'),
+                        'sectionname' => get_string('sectionname', 'format_buttons'),
                     ),
                 ),
             );
@@ -231,6 +232,7 @@ class format_buttons extends format_topics {
                     array(
                         'circle' => get_string('circle', 'format_buttons'),
                         'square' => get_string('square', 'format_buttons'),
+                        'roundedcorners' => get_string('roundedcorners', 'format_buttons'),
                     ),
                 ),
             );

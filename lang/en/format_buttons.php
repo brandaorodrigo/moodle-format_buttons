@@ -70,5 +70,6 @@ $string['buttonstyle'] = 'Button style';
 $string['buttonstyle_help'] = 'Define the shape style of the buttons.';
 $string['circle'] = 'Circle';
 $string['square'] = 'Square';
+$string['roundedcorners'] = 'Rounded corners';
 $string['inlinesections'] = 'Inline sections';
 $string['inlinesections_help'] = 'Give each section a new line.';
